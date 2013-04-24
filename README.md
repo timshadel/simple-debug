@@ -1,5 +1,5 @@
 
-# simple-debug
+# simple-debug [![Build Status](https://travis-ci.org/timshadel/simple-debug.png?branch=master)](https://travis-ci.org/timshadel/simple-debug)
 
 Simple tool to limit log output. It's configuration is compatible with visionmedia/debug.
 
