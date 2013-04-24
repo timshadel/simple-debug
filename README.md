@@ -73,4 +73,4 @@ setInterval(function(){
 
 MIT. The core functions were extracted from [debug][debug]. See LICENSE for details.
 
-[debug]: https://github.com/senchalabs/debug
+[debug]: https://github.com/visionmedia/debug

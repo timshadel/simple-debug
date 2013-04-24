@@ -80,4 +80,34 @@ describe("a debug function", function(){
 
   });
 
+
+  describe("when given an alternate output stream", function(){
+
+    it("should reroute it own logs", function() {
+      debug.enable.all();
+      var simple = debug("simple");
+      var rerouted = "";
+      simple.log = function(msg) {
+        rerouted = msg;
+      };
+      simple("output");
+      expect(str).to.equal("");
+      expect(rerouted).to.equal("output");
+    });
+
+    it("should not reroute other logs", function() {
+      debug.enable.all();
+      var simple = debug("simple");
+      var other = debug("other");
+      var rerouted = "";
+      simple.log = function(msg) {
+        rerouted = msg;
+      };
+      other("output");
+      expect(str).to.equal("output");
+      expect(rerouted).to.equal("");
+    });
+
+  });
+
 });
