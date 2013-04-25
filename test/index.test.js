@@ -27,22 +27,19 @@ describe("a debug function", function(){
     });
 
     it("when the config is exactly its name", function() {
-      debug.config = 'simple';
-      debug.reset();
+      debug.configure('simple');
       debug("simple")("output");
       expect(str).to.equal("output");
     });
 
     it("when the config contains its name", function() {
-      debug.config = 'other,simple third';
-      debug.reset();
+      debug.configure('other,simple third');
       debug("simple")("output");
       expect(str).to.equal("output");
     });
 
     it("when the config matches its name", function() {
-      debug.config = 'other,sim*,last';
-      debug.reset();
+      debug.configure('other,sim*,last');
       debug("simple")("output");
       expect(str).to.equal("output");
     });
@@ -58,22 +55,19 @@ describe("a debug function", function(){
     });
 
     it("when the config disables exactly its name", function() {
-      debug.config = '-simple';
-      debug.reset();
+      debug.configure('-simple');
       debug("simple")("output");
       expect(str).to.equal("");
     });
 
     it("when the config disables matches of its name", function() {
-      debug.config = '-sim*';
-      debug.reset();
+      debug.configure('-sim*');
       debug("simple")("output");
       expect(str).to.equal("");
     });
 
     it("when it is both disabled and enabled", function() {
-      debug.config = 'simple,-sim*';
-      debug.reset();
+      debug.configure('simple,-sim*');
       debug("simple")("output");
       expect(str).to.equal("");
     });

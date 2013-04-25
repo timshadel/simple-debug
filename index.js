@@ -18,7 +18,8 @@ exports.log = console.log.bind(console);
  */
 
 var names = []
-  , skips = [];
+  , skips = []
+  , config;
 
 /**
  * Create a debugger with the given `name`.
@@ -46,7 +47,7 @@ function debug(name) {
 
   function logger(msg) {
     msg = (msg instanceof Error) ? (msg.stack || msg.message) : msg;
-    logger.log.apply(this, arguments);
+    Function.prototype.apply.call(logger.log, this, arguments);
   }
 
   logger.log = exports.log;
@@ -80,15 +81,22 @@ exports.clear = function() {
   names = [];
 }
 
-exports.config = (process.env.DEBUG || '');
+exports.configure = function(val) {
+  try {
+    localStorage.debug = val;
+  } catch(e){}
+
+  config = val;
+  exports.reset();
+}
 
 exports.reset = function() {
-  skips = [];
-  names = [];
+  exports.clear();
 
-  exports.config  
+  config
     .split(/[\s,]+/)
     .forEach(function(name){
+      if (name.length === 0 || name === '-') return;
       if (name[0] === '-') {
         exports.disable(name.substr(1));
       } else {
@@ -97,4 +105,8 @@ exports.reset = function() {
     });
 }
 
-exports.reset();
+if (this.window) {
+  exports.configure(localStorage.debug || '');
+} else {
+  exports.configure(process.env.DEBUG || '');
+}
