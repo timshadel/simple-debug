@@ -3,6 +3,8 @@
  * Module dependencies.
  */
 
+var console = require('console');
+
 exports = module.exports = debug;
 
 
