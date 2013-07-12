@@ -1,6 +1,6 @@
 {
   "name": "simple-debug",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "simple tool to limit log output",
   "keywords": ["debug", "log", "debugger", "simple"],
   "author": "Tim Shadel <tim@shadelsoftware.com>",
