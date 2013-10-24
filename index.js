@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -108,6 +107,7 @@ exports.reset = function() {
 }
 
 if (this.window) {
+  if (!window.localStorage) return;
   exports.configure(localStorage.debug || '');
 } else {
   exports.configure(process.env.DEBUG || '');
