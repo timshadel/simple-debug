@@ -11,7 +11,9 @@ exports = module.exports = debug;
  * Expose log function. Default to `console.log`.
  */
 
-exports.log = console.log.bind(console);
+exports.log = function(a, b, c, d, e, f, g, h, i, j, k, l) {
+  console.log(a, b, c, d, e, f, g, h, i, j, k, l);
+};
 
 
 /**
